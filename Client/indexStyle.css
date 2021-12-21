@@ -1,0 +1,73 @@
+a{
+    text-decoration: none;
+}
+
+p{
+    font-family: "Dubai Light", serif;
+}
+
+h3{
+    font-family: "Dubai Light", serif;
+}
+
+
+
+h1{
+    display: flex;
+    justify-content: center;
+    color: #91ff8b;
+    font-family: "Dubai Medium", serif;
+}
+
+#formContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 90vh;
+}
+
+
+#formContainer > form > label{
+    font-family: "Dubai Light", serif;
+}
+#formContainer > form > input{
+    width: 20vw;
+    height: 3vh;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 2vh;
+}
+
+#formContainer > form > button{
+    display: flex;
+    justify-content: center;
+    width: 20.4vw;
+    height: 3vh;
+    font-size: 20px;
+    border-radius: 5px;
+    color: #000000;
+    background-color: #91ff8b;
+    margin-top: 20px;
+    font-family: "Dubai Light", serif;
+    line-height: 20px;
+}
+
+#formContainer > form > p{
+    display: flex;
+    width: 20vw;
+    height: 3vh;
+    font-size: 15px;
+    justify-content: center;
+}
+
+#formContainer > form > p >a{
+    margin-left: 5px;
+}
+
+#bottomTextContainer{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10vh;
+    width: 50vw;
+}
