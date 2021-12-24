@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="registrerStyle.css" rel="stylesheet">
 </head>
 <body>
+
+<h1>klima-slogan</h1>
+
+<div id="formContainer">
+
+    <h3>Indtast Oplysninger</h3>
 
 <form>
 
@@ -17,9 +24,16 @@
     <label for = "Foedselsdato">Indtast Fødselsdato:</label><br>
     <input id="Foedselsdato" type="date"><br>
 
+    <label for = "Kodeord">Indtast Kodeord:</label><br>
+    <input id="Kodeord" type="password"><br>
+
 </form>
 
-<button onclick="postRequest()">Registrer</button>
+    <button onclick="postRequest()">Registrer</button>
+
+</div>
+
+
 
 <script src="registrer.js"></script>
 

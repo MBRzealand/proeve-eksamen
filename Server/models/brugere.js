@@ -13,6 +13,10 @@ const BrugerSchema = new mongoose.Schema({
     Foedselsdato: {
         type: String,
         required: true,
+    },
+    Kodeord: {
+        type: String,
+        required: true,
     }
 });
 

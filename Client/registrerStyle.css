@@ -24,7 +24,7 @@ h1{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 90vh;
+    height: 65vh;
 }
 
 
@@ -63,11 +63,4 @@ button{
 
 #formContainer > form > p >a{
     margin-left: 5px;
-}
-
-#bottomTextContainer{
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 10vh;
-    width: 50vw;
 }
