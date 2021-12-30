@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Beskeder</title>
+    <link href="beskederStyle.css" rel="stylesheet">
 </head>
 <body>
-<h4>Beskeder</h4>
-<div id="messageContainer"></div>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+        <input id="input" autocomplete="off" />
+        <button id="button1">Send</button>
+    </form>
+
+<script src="/Server/node_modules/socket.io/client-dist/socket.io.js"></script>
+<script src="/Client/beskederScript.js"></script>
 
 </body>
 </html>

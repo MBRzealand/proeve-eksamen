@@ -1,10 +1,14 @@
 require('dotenv').config({path:"./.env"})
 const cors = require("cors");
-const express = require("express");
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+
 const mongoose = require("mongoose");
 const Router = require("./routes/routes");
-
-const app = express();
 
 app.use(express.json());
 
@@ -19,6 +23,29 @@ mongoose.connect(
 app.use(cors());
 app.use(Router);
 
-app.listen(3000, () => {
-    console.log("Server is running...");
+io.on('connection', (socket) => {
+
+    socket.on('setSocketId', function(data) {
+        let userName = data.name;
+        io.emit('chat message',`${userName} connected`);
+        console.log(`${userName} connected`)
+    });
+
+    socket.on('disconnect', function(data) {
+        let userName = data.name;
+        io.emit('chat message',`${userName} disconnected`);
+        console.log(`${userName} disconnected`)
+    });
+    socket.on('chat message', (msg) => {
+        io.emit('chat message', msg);
+    });
+
+
+});
+
+
+
+
+server.listen(3000, () => {
+    console.log('listening on port: 3000');
 });
