@@ -43,7 +43,9 @@ io.on('connection', (socket) => {
 
 });
 
-
+app.get('/', function(req, res){
+    res.sendFile('./Client/index.html');
+});
 
 
 server.listen(process.env.PORT, () => {
