@@ -6,7 +6,6 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const path = require('path');
 
 const mongoose = require("mongoose");
 const Router = require("./routes/routes");
