@@ -1,6 +1,6 @@
 async function login() {
 
-    let getRequest = await fetch("http://localhost:3000/brugere").then(response => response.json());
+    let getRequest = await fetch("https://tallboye.herokuapp.com/brugere").then(response => response.json());
 
     let user = getRequest.find( object => object.Navn === document.getElementById("brugerNavn").value)
 

@@ -7,7 +7,7 @@ async function postRequest() {
         "Kodeord": document.getElementById("Kodeord").value
     }
 
-    let postRequest = await fetch("http://localhost:3000/bruger", {
+    let postRequest = await fetch("https://tallboye.herokuapp.com/bruger", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
