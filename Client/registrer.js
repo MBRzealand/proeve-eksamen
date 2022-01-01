@@ -1,8 +1,8 @@
 async function postRequest() {
 
     const button = document.getElementById("register");
-    button.disabled = true;
-    button.style.opacity = "0.5";
+    button.setAttribute('disabled', 'disabled');
+    button.setAttribute('opacity', '0.5');
 
 
     let data = {
@@ -19,10 +19,10 @@ async function postRequest() {
     });
 
     if(postRequest.ok){
-        window.location.href = "index.html";
+        window.location.href = "https://tallboye.com/chat/index.html";
     } else {
-        button.disabled = false;
-        button.style.opacity = "1.0";
+        button.removeAttribute('disabled');
+        button.setAttribute('opacity', '0.5');
     }
 
 

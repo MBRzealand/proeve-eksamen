@@ -23,19 +23,18 @@ mongoose.connect(
 app.use(cors());
 app.use(Router);
 
+
 io.on('connection', (socket) => {
 
     socket.on('setSocketId', function(data) {
-        let userName = data.name;
-        io.emit('chat message',`${userName} connected`);
-        console.log(`${userName} connected`)
+        socket.username = data.username;
+        io.emit('chat message',`${socket.username} connected`);
     });
 
-    socket.on('disconnect', function(data) {
-        let userName = data.name;
-        io.emit('chat message',`${userName} disconnected`);
-        console.log(`${userName} disconnected`)
+    socket.on('disconnect', function() {
+        io.emit('chat message',`${socket.username} disconnected`);
     });
+
     socket.on('chat message', (msg) => {
         io.emit('chat message', msg);
     });

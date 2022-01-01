@@ -11,15 +11,15 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
+
+
 let connect = () => {
     this.socket = io.connect('https://tallboye.herokuapp.com/', connectionOptions);
-
-    data = {name: getCookie("username"), userId: socket.id};
+    data = {username:getCookie("username")};
     socket.emit('setSocketId', data);
 }
 
 document.onload = connect()
-
 
 let messages = document.getElementById('messages');
 let form = document.getElementById('form');
@@ -40,8 +40,3 @@ socket.on('chat message', function(msg) {
     window.scrollTo(0, document.body.scrollHeight);
 });
 
-let leave = () => {
-    this.socket = io.disconnect()
-    data = {name: getCookie("username"), userId: socket.id};
-    socket.emit('setSocketId', data);
-}
