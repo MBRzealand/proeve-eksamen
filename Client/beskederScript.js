@@ -10,7 +10,7 @@ let connectionOptions =  {
     "transports" : ["websocket"]
 };
 
-const socket = io.connect('https://tallboye.herokuapp.com:3000', connectionOptions);
+const socket = io.connect(/*'https://tallboye.herokuapp.com:3000'*/ "http://localhost:3000/", connectionOptions);
 
 function getCookie(name){
 
@@ -23,8 +23,30 @@ function getCookie(name){
     }
 }
 
-let data = {username:getCookie("username")};
-socket.emit('setSocketId', data);
+let data = {};
+
+let updateUsers = async () => {
+    let getRequest = await fetch("https://tallboye.herokuapp.com/brugere").then(response => response.json());
+
+    for (let i = 0; i < getRequest.length; i++) {
+        let navn = getRequest[i].Navn
+        let user = document.createElement('div');
+        user.className = "user"
+        user.id = navn.toString()
+        let status = document.createElement("div")
+        status.className = "status"
+        user.appendChild(status)
+        user.appendChild(document.createTextNode(navn))
+
+        document.getElementById("usersContainer").appendChild(user)
+    }
+
+    data = {username:getCookie("username")};
+    socket.emit('setSocketId', data);
+
+}
+
+updateUsers()
 
 
 form.addEventListener('submit', function(e) {
@@ -41,3 +63,17 @@ socket.on('chat message', function(msg) {
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
 });
+
+socket.on('setSocketId', function(connectedClients) {
+
+    console.log(connectedClients)
+
+    for (let i = 0; i < connectedClients.length; i++) {
+
+        let userDiv = document.getElementById(connectedClients[i]);
+        userDiv.querySelector(".status").style.backgroundColor = "green";
+    }
+
+});
+
+

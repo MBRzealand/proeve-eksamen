@@ -56,3 +56,26 @@
 #messages > li:nth-child(odd) {
     background: #efefef;
 }
+
+#pageContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user > div{
+    margin-right: 5px;
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-style: solid;
+    border-radius: 50%;
+    border-color: black;
+    border-width: 1px;
+}
+
+.user{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
