@@ -10,7 +10,7 @@ let connectionOptions =  {
     "transports" : ["websocket"]
 };
 
-const socket = io.connect('https://tallboye.herokuapp.com/',connectionOptions ); /*"http://localhost:3000/"*/
+const socket = io.connect('https://tallboye.herokuapp.com/', connectionOptions ); /*"http://localhost:3000/"*/
 
 function getCookie(name){
 
@@ -72,9 +72,10 @@ socket.on('setSocketId', function(connectedClients) {
 
 });
 
-socket.on('disconnect', function(username) {
-
-    let userDiv = document.getElementById(username);
-    userDiv.querySelector(".status").style.backgroundColor = "red";
-
-});
+// socket.on('disconnect', function(username) {
+//
+//     console.log(username)
+//     let userDiv = document.getElementById(username);
+//     userDiv.querySelector(".status").style.backgroundColor = "red";
+//
+// });
