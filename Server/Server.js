@@ -27,12 +27,12 @@ io.on('connection', (socket) => {
     socket.on('setSocketId',function(data) {
         socket.name = data.username;
         let msg = socket.name + " connected"
-        io.emit('chat message', msg);
+        io.emit('setSocketId', msg);
     });
 
     socket.on('disconnect', ()=> {
         let msg = socket.name + " disconnected"
-        io.emit('chat message', msg);
+        io.emit('disconnect', msg);
     });
 
     socket.on('chat message', msg => {
