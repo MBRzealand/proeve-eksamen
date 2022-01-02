@@ -28,6 +28,11 @@ socket.emit('setSocketId', data);
 
 let updateUsers = async () => {
 
+    const userContainer = document.getElementById("usersContainer");
+    while (userContainer.firstChild) {
+        userContainer.removeChild(userContainer.lastChild);
+    }
+
     let getRequest = await fetch("https://tallboye.herokuapp.com/brugere").then(response => response.json());
 
     for (let i = 0; i < getRequest.length; i++) {
@@ -43,8 +48,6 @@ let updateUsers = async () => {
         document.getElementById("usersContainer").appendChild(user)
     }
 }
-
-updateUsers()
 
 
 form.addEventListener('submit', function(e) {
@@ -62,20 +65,34 @@ socket.on('chat message', function(msg) {
     window.scrollTo(0, document.body.scrollHeight);
 });
 
+let connectedClientList = []
+
 socket.on('setSocketId', function(connectedClients) {
 
-    for (let i = 0; i < connectedClients.length; i++) {
+    connectedClientList = connectedClients;
 
-        let userDiv = document.getElementById(connectedClients[i]);
+    updateUsers().then(() =>{
+
+    for (let i = 0; i < connectedClientList.length; i++) {
+
+        let userDiv = document.getElementById(connectedClientList[i]);
         userDiv.querySelector(".status").style.backgroundColor = "green";
     }
 
+    })
+
 });
 
-// socket.on('disconnect', function(username) {
-//
-//     console.log(username)
-//     let userDiv = document.getElementById(username);
-//     userDiv.querySelector(".status").style.backgroundColor = "red";
-//
-// });
+socket.on('disconnect', function() {
+
+    updateUsers().then(() =>{
+
+        for (let i = 0; i < connectedClientList.length; i++) {
+
+            let userDiv = document.getElementById(connectedClientList[i]);
+            userDiv.querySelector(".status").style.backgroundColor = "green";
+        }
+
+    })
+
+});
