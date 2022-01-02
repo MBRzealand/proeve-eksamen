@@ -12,6 +12,7 @@ function getCookie(name) {
 }
 
 let data = getCookie("username");
+console.log(data)
 
 let connect = () => {
     this.socket = io.connect('https://tallboye.herokuapp.com/:3000', connectionOptions);
