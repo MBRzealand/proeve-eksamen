@@ -2,7 +2,8 @@ let messages = document.getElementById('messages');
 let form = document.getElementById('form');
 let input = document.getElementById('input');
 
-var connectionOptions =  {
+let connectionOptions =  {
+    "withCredentials" : true,
     "force new connection" : true,
     "reconnectionAttempts": "Infinity",
     "timeout" : 10000,
@@ -23,7 +24,7 @@ function getCookie(name){
 }
 
 let data = {username:getCookie("username")};
-socket.emit('setSocketId', data);
+socket.emit('chat message', data);
 
 
 form.addEventListener('submit', function(e) {
