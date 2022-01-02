@@ -1,7 +1,10 @@
 require('dotenv').config({path:"./.env"})
 const cors = require("cors");
 const express = require('express');
+
 const app = express();
+app.use(cors());
+
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
@@ -11,11 +14,11 @@ const mongoose = require("mongoose");
 const Router = require("./routes/routes");
 
 app.use(express.json());
-app.use(cors());
+
 app.use(Router);
 
 mongoose.connect(
-    "mongodb+srv://Mikkel:ADMIN@cluster0.4wseh.mongodb.net/ProeveEksamen?retryWrites=true&w=majority",
+    process.env.DB_URL,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -41,6 +44,6 @@ io.on('connection', (socket) => {
 });
 
 
-server.listen(3000, () => {
+server.listen(process.env.PORT, () => {
     console.log('listening on port: 3000');
 });
