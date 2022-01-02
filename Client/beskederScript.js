@@ -27,6 +27,12 @@ data = {username:getCookie("username")};
 socket.emit('setSocketId', data);
 
 let updateUsers = async () => {
+
+    const userContainer = document.getElementById("usersContainer");
+    while (userContainer.lastElementChild) {
+        userContainer.removeChild(userContainer.lastElementChild);
+    }
+
     let getRequest = await fetch("https://tallboye.herokuapp.com/brugere").then(response => response.json());
 
     for (let i = 0; i < getRequest.length; i++) {
@@ -63,6 +69,8 @@ socket.on('chat message', function(msg) {
 
 socket.on('setSocketId', function(connectedClients) {
 
+    updateUsers()
+
     for (let i = 0; i < connectedClients.length; i++) {
 
         let userDiv = document.getElementById(connectedClients[i]);
@@ -70,13 +78,3 @@ socket.on('setSocketId', function(connectedClients) {
     }
 
 });
-
-socket.on('setSocketId', function() {
-    let statuses = document.getElementsByClassName("status")
-
-    for (let i = 0; i < statuses.length; i++) {
-        statuses[i].style.backgroundColor = "red";
-    }
-});
-
-
