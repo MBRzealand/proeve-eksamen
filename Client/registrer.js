@@ -7,13 +7,11 @@ async function postRequest() {
 
 
     let getRequest = await fetch("https://tallboye.herokuapp.com/brugere").then(response => response.json());
-    let user = getRequest.find( object => object.Navn === document.getElementById("brugerNavn").value)
+    let user = getRequest.find( object => object.Navn === document.getElementById("Navn").value)
 
     if (user === undefined) {
         let data = {
             "Navn": document.getElementById("Navn").value,
-            "Email": document.getElementById("Email").value,
-            "Foedselsdato": document.getElementById("Foedselsdato").value,
             "Kodeord": document.getElementById("Kodeord").value
         }
 
@@ -29,7 +27,6 @@ async function postRequest() {
 
     } else {
         document.getElementById("warning").innerText = "Username already exists"
-
         button.removeAttribute('disabled');
         button.setAttribute('opacity', '0.5');
     }

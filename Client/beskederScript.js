@@ -11,8 +11,6 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-
-
 let connect = () => {
     this.socket = io.connect('https://tallboye.herokuapp.com/', connectionOptions);
     data = {username:getCookie("username")};
