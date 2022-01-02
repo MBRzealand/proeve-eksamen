@@ -5,25 +5,35 @@ async function postRequest() {
     button.setAttribute('opacity', '0.5');
 
 
-    let data = {
-        "Navn": document.getElementById("Navn").value,
-        "Email": document.getElementById("Email").value,
-        "Foedselsdato": document.getElementById("Foedselsdato").value,
-        "Kodeord": document.getElementById("Kodeord").value
-    }
 
-    let postRequest = await fetch("https://tallboye.herokuapp.com/bruger", {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-    });
+    let getRequest = await fetch("https://tallboye.herokuapp.com/brugere").then(response => response.json());
+    let user = getRequest.find( object => object.Navn === document.getElementById("brugerNavn").value)
 
-    if(postRequest.ok){
-        window.location.href = "https://tallboye.com/chat/index.html";
+    if (user === undefined) {
+        let data = {
+            "Navn": document.getElementById("Navn").value,
+            "Email": document.getElementById("Email").value,
+            "Foedselsdato": document.getElementById("Foedselsdato").value,
+            "Kodeord": document.getElementById("Kodeord").value
+        }
+
+        let postRequest = await fetch("https://tallboye.herokuapp.com/bruger", {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(data),
+        });
+
+        if(postRequest.ok){
+            window.location.href = "https://tallboye.com/chat/index.html";
+        }
+
     } else {
+        document.getElementById("warning").innerText = "Username already exists"
+
         button.removeAttribute('disabled');
         button.setAttribute('opacity', '0.5');
     }
+
 
 
 }

@@ -6,14 +6,6 @@ const BrugerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    Email: {
-        type: String,
-        required: true,
-    },
-    Foedselsdato: {
-        type: String,
-        required: true,
-    },
     Kodeord: {
         type: String,
         required: true,

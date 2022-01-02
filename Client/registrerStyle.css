@@ -64,3 +64,8 @@ button{
 #formContainer > form > p >a{
     margin-left: 5px;
 }
+
+
+#warning{
+    color: red;
+}
