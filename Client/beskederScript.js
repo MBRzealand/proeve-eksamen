@@ -12,7 +12,7 @@ function getCookie(name) {
 }
 
 let connect = () => {
-    this.socket = io.connect('https://tallboye.herokuapp.com/', connectionOptions);
+    this.socket = io.connect('https://tallboye.herokuapp.com/:3000', connectionOptions);
     data = {username:getCookie("username")};
     socket.emit('setSocketId', data);
 }
@@ -26,7 +26,7 @@ let input = document.getElementById('input');
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (input.value) {
-        socket.emit('chat message', data.name + ": " + input.value);
+        socket.emit('chat message', data.username + ": " + input.value);
         input.value = '';
     }
 });

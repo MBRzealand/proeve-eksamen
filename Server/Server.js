@@ -27,7 +27,7 @@ mongoose.connect(
 
 io.on('connection', (socket) => {
 
-    socket.on('setSocketId', function(data) {
+    socket.on('setSocketId', (data) => {
         socket.username = data.username;
         io.emit('chat message',`${socket.username} connected`);
     });
