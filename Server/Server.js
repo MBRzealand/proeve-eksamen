@@ -25,13 +25,13 @@ mongoose.connect(
 io.on('connection', (socket) => {
 
     socket.on('setSocketId',function(data) {
-        socket.username = data.username;
-        let msg = socket.username + " connected"
+        socket.name = data.username;
+        let msg = socket.name + " connected"
         io.emit('chat message', msg);
     });
 
     socket.on('disconnect', ()=> {
-        let msg = socket.username + " disconnected"
+        let msg = socket.name + " disconnected"
         io.emit('chat message', msg);
     });
 
