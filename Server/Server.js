@@ -27,7 +27,7 @@ let connectedClients = [];
 io.on('connection', (socket) => {
 
     socket.on('setSocketId',function(data) {
-        let username = data.name
+        let username = data.username
         connectedClients.push(username)
         let msg = username + " connected"
         io.emit('chat message', msg);

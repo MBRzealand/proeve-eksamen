@@ -10,7 +10,7 @@ let connectionOptions =  {
     "transports" : ["websocket"]
 };
 
-const socket = io.connect(/*'https://tallboye.herokuapp.com:3000'*/ "http://localhost:3000/", connectionOptions);
+const socket = io.connect('https://tallboye.herokuapp.com:3000/',connectionOptions ); /*"http://localhost:3000/"*/
 
 function getCookie(name){
 
@@ -23,7 +23,8 @@ function getCookie(name){
     }
 }
 
-let data = {};
+data = {username:getCookie("username")};
+socket.emit('setSocketId', data);
 
 let updateUsers = async () => {
     let getRequest = await fetch("https://tallboye.herokuapp.com/brugere").then(response => response.json());
@@ -40,10 +41,6 @@ let updateUsers = async () => {
 
         document.getElementById("usersContainer").appendChild(user)
     }
-
-    data = {username:getCookie("username")};
-    socket.emit('setSocketId', data);
-
 }
 
 updateUsers()
