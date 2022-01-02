@@ -63,12 +63,6 @@ socket.on('chat message', function(msg) {
 
 socket.on('setSocketId', function(connectedClients) {
 
-    let statuses = document.getElementsByClassName("status")
-
-    for (let i = 0; i < statuses.length; i++) {
-        statuses[i].style.backgroundColor = "red";
-    }
-
     for (let i = 0; i < connectedClients.length; i++) {
 
         let userDiv = document.getElementById(connectedClients[i]);
@@ -77,6 +71,12 @@ socket.on('setSocketId', function(connectedClients) {
 
 });
 
+socket.on('setSocketId', function() {
+    let statuses = document.getElementsByClassName("status")
 
+    for (let i = 0; i < statuses.length; i++) {
+        statuses[i].style.backgroundColor = "red";
+    }
+});
 
 
