@@ -42,6 +42,7 @@ io.on('connection', (socket) => {
             }
 
             io.emit('chat message', msg);
+            io.emit('disconnect', username)
         });
     });
 
