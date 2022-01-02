@@ -27,7 +27,7 @@ mongoose.connect(
 
 io.on('connection', (socket) => {
 
-    socket.on('setSocketId', (data) => {
+    socket.on('setSocketId', data => {
         socket.username = data.username;
         io.emit('chat message',`${socket.username} connected`);
     });
@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
         io.emit('chat message',`${socket.username} disconnected`);
     });
 
-    socket.on('chat message', (msg) => {
+    socket.on('chat message', msg => {
         io.emit('chat message', msg);
     });
 

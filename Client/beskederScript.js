@@ -1,9 +1,15 @@
+let messages = document.getElementById('messages');
+let form = document.getElementById('form');
+let input = document.getElementById('input');
+
 var connectionOptions =  {
     "force new connection" : true,
     "reconnectionAttempts": "Infinity",
     "timeout" : 10000,
     "transports" : ["websocket"]
 };
+
+const socket = io.connect('https://tallboye.herokuapp.com/', connectionOptions);
 
 function getCookie(name){
 
@@ -17,18 +23,8 @@ function getCookie(name){
 }
 
 let data = {username:getCookie("username")};
-console.log(data)
+socket.emit('setSocketId', data);
 
-let connect = () => {
-    this.socket = io.connect('https://tallboye.herokuapp.com/', connectionOptions);
-    socket.emit('setSocketId', data);
-}
-
-document.onload = connect()
-
-let messages = document.getElementById('messages');
-let form = document.getElementById('form');
-let input = document.getElementById('input');
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
