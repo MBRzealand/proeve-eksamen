@@ -13,7 +13,7 @@ const Router = require("./routes/routes");
 app.use(express.json());
 
 mongoose.connect(
-    process.env.DB_URL,
+    "mongodb+srv://Mikkel:ADMIN@cluster0.4wseh.mongodb.net/ProeveEksamen?retryWrites=true&w=majority",
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -43,6 +43,6 @@ io.on('connection', (socket) => {
 });
 
 
-server.listen(process.env.PORT, () => {
+server.listen(3000, () => {
     console.log('listening on port: 3000');
 });
