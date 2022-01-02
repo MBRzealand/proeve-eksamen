@@ -10,7 +10,7 @@ let connectionOptions =  {
     "transports" : ["websocket"]
 };
 
-const socket = io.connect('https://tallboye.herokuapp.com/', connectionOptions);
+const socket = io.connect('https://tallboye.herokuapp.com:3000', connectionOptions);
 
 function getCookie(name){
 
@@ -24,7 +24,7 @@ function getCookie(name){
 }
 
 let data = {username:getCookie("username")};
-socket.emit('chat message', data);
+socket.emit('setSocketId', data);
 
 
 form.addEventListener('submit', function(e) {

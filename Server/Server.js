@@ -27,16 +27,16 @@ io.on('connection', (socket) => {
     socket.on('setSocketId',function(data) {
         socket.username = data.username;
         let msg = socket.username + " connected"
-        socket.emit('chat message', msg);
+        io.emit('chat message', msg);
     });
 
     socket.on('disconnect', ()=> {
         let msg = socket.username + " disconnected"
-        socket.emit('chat message', msg);
+        io.emit('chat message', msg);
     });
 
     socket.on('chat message', msg => {
-        socket.emit('chat message', msg);
+        io.emit('chat message', msg);
     });
 
 
