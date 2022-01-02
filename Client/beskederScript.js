@@ -10,7 +10,7 @@ let connectionOptions =  {
     "transports" : ["websocket"]
 };
 
-const socket = io.connect('https://tallboye.herokuapp.com:3000/',connectionOptions ); /*"http://localhost:3000/"*/
+const socket = io.connect('https://tallboye.herokuapp.com/',connectionOptions ); /*"http://localhost:3000/"*/
 
 function getCookie(name){
 
@@ -63,7 +63,11 @@ socket.on('chat message', function(msg) {
 
 socket.on('setSocketId', function(connectedClients) {
 
-    console.log(connectedClients)
+    let statuses = document.getElementsByClassName("status")
+
+    for (let i = 0; i < statuses.length; i++) {
+        statuses[i].style.backgroundColor = "red";
+    }
 
     for (let i = 0; i < connectedClients.length; i++) {
 
@@ -72,5 +76,7 @@ socket.on('setSocketId', function(connectedClients) {
     }
 
 });
+
+
 
 

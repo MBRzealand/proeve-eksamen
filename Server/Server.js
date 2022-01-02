@@ -35,6 +35,12 @@ io.on('connection', (socket) => {
 
         socket.on('disconnect', ()=> {
             let msg = username + " disconnected"
+
+            const index = connectedClients.indexOf(username);
+            if (index > -1) {
+                connectedClients.splice(index, 1);
+            }
+
             io.emit('chat message', msg);
         });
     });

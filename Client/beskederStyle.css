@@ -62,7 +62,7 @@
     flex-wrap: wrap;
 }
 
-.user > div{
+.user > .status{
     margin-right: 5px;
     width: 8px;
     height: 8px;
