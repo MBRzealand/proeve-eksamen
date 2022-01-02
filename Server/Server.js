@@ -11,6 +11,8 @@ const mongoose = require("mongoose");
 const Router = require("./routes/routes");
 
 app.use(express.json());
+app.use(cors());
+app.use(Router);
 
 mongoose.connect(
     "mongodb+srv://Mikkel:ADMIN@cluster0.4wseh.mongodb.net/ProeveEksamen?retryWrites=true&w=majority",
@@ -19,10 +21,6 @@ mongoose.connect(
         useUnifiedTopology: true
     }
 );
-
-app.use(cors());
-app.use(Router);
-
 
 io.on('connection', (socket) => {
 
