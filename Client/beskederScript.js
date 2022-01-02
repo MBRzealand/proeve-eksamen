@@ -5,17 +5,22 @@ var connectionOptions =  {
     "transports" : ["websocket"]
 };
 
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+function getCookie(name){
+
+    let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    if (match) {
+        return match[2];
+    }
+    else{
+        console.log('--something went wrong---');
+    }
 }
 
-let data = getCookie("username");
+let data = {username:getCookie("username")};
 console.log(data)
 
 let connect = () => {
-    this.socket = io.connect('https://tallboye.herokuapp.com/:3000', connectionOptions);
+    this.socket = io.connect('https://tallboye.herokuapp.com/', connectionOptions);
     socket.emit('setSocketId', data);
 }
 

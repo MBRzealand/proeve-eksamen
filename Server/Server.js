@@ -27,13 +27,13 @@ mongoose.connect(
 
 io.on('connection', (socket) => {
 
-    socket.on('setSocketId', function (data) {
-        socket.username = data;
-        io.emit('chat message',`${socket.username.toString()} connected`);
+    socket.on('setSocketId', (data) => {
+        socket.username = data.username;
+        io.emit('chat message',`${socket.username} connected`);
     });
 
     socket.on('disconnect', function() {
-        io.emit('chat message',`${socket.username.toString()} disconnected`);
+        io.emit('chat message',`${socket.username} disconnected`);
     });
 
     socket.on('chat message', (msg) => {
@@ -44,6 +44,4 @@ io.on('connection', (socket) => {
 });
 
 
-server.listen(process.env.PORT, () => {
-    console.log('listening on port: 3000');
-});
+server.listen(process.env.PORT || 3000);
