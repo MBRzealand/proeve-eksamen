@@ -49,6 +49,7 @@ let updateUsers = async () => {
     }
 }
 
+updateUsers()
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -65,34 +66,17 @@ socket.on('chat message', function(msg) {
     window.scrollTo(0, document.body.scrollHeight);
 });
 
-let connectedClientList = []
-
 socket.on('setSocketId', function(connectedClients) {
 
-    connectedClientList = connectedClients;
+    for (let i = 0; i < connectedClients.length; i++) {
 
-    updateUsers().then(() =>{
-
-    for (let i = 0; i < connectedClientList.length; i++) {
-
-        let userDiv = document.getElementById(connectedClientList[i]);
+        let userDiv = document.getElementById(connectedClients[i]);
         userDiv.querySelector(".status").style.backgroundColor = "green";
     }
 
-    })
-
 });
 
-socket.on('disconnect', function() {
-
-    updateUsers().then(() =>{
-
-        for (let i = 0; i < connectedClientList.length; i++) {
-
-            let userDiv = document.getElementById(connectedClientList[i]);
-            userDiv.querySelector(".status").style.backgroundColor = "green";
-        }
-
-    })
-
+socket.on('user left', function(name) {
+    let userDiv = document.getElementById(name);
+    userDiv.querySelector(".status").style.backgroundColor = "green";
 });

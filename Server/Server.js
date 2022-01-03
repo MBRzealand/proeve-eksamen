@@ -31,7 +31,6 @@ io.on('connection', (socket) => {
         connectedClients.push(username)
         let msg = username + " connected"
         io.emit('chat message', msg);
-        io.emit('setSocketId', connectedClients);
 
         socket.on('disconnect', ()=> {
             let msg = username + " disconnected"
@@ -40,11 +39,14 @@ io.on('connection', (socket) => {
             if (index > -1) {
                 connectedClients.splice(index, 1);
             }
-
+            io.emit('user left', username)
             io.emit('chat message', msg);
-            io.emit('disconnect');
         });
     });
+
+    socket.on('user left', user => {
+        io.emit('user left', user)
+    })
 
     socket.on('chat message', msg => {
         io.emit('chat message', msg);
