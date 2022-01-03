@@ -31,6 +31,7 @@ io.on('connection', (socket) => {
         connectedClients.push(username)
         let msg = username + " connected"
         io.emit('chat message', msg);
+        io.emit('setSocketId', connectedClients)
 
         socket.on('disconnect', ()=> {
             let msg = username + " disconnected"

@@ -78,5 +78,5 @@ socket.on('setSocketId', function(connectedClients) {
 
 socket.on('user left', function(name) {
     let userDiv = document.getElementById(name);
-    userDiv.querySelector(".status").style.backgroundColor = "green";
+    userDiv.querySelector(".status").style.backgroundColor = "red";
 });
