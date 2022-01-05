@@ -49,8 +49,6 @@ let updateUsers = async () => {
     }
 }
 
-updateUsers()
-
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (input.value) {
@@ -68,12 +66,15 @@ socket.on('chat message', function(msg) {
 
 socket.on('setSocketId', function(connectedClients) {
 
-    for (let i = 0; i < connectedClients.length; i++) {
+    updateUsers().then(()=>{
 
-        let userDiv = document.getElementById(connectedClients[i]);
-        userDiv.querySelector(".status").style.backgroundColor = "green";
-    }
+        for (let i = 0; i < connectedClients.length; i++) {
 
+            let userDiv = document.getElementById(connectedClients[i]);
+            userDiv.querySelector(".status").style.backgroundColor = "green";
+        }
+
+    })
 });
 
 socket.on('user left', function(name) {

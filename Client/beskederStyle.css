@@ -1,20 +1,20 @@
 #form {
     position: fixed;
     height: 3vh;
-    width: 100vw;
     display: flex;
-    justify-content: space-between;
     background: rgba(44, 44, 44, 0.55);
     align-items: center;
     box-sizing: border-box;
-
 }
 
 
 #input {
+
+    font-size: 2vh;
     border: none;
-    padding: 0 1rem;
+    padding: 0 2vw;
     flex-grow: 1;
+    height: 2.5vh;
     border-radius: 2rem;
     margin: 0.25rem;
 }
@@ -28,22 +28,14 @@
     border: none;
     padding: 0 1rem;
     margin: 0.25rem;
-    border-radius: 3px;
-    outline: none;
-    color: #fff;
-}
-
-#button2 {
-    background: #9d0000;
-    border: none;
-    padding: 0 1rem;
-    margin: 0.25rem;
+    height: 3vh;
     border-radius: 3px;
     outline: none;
     color: #fff;
 }
 
 #messages {
+    font-size: 2vh;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -57,15 +49,20 @@
     background: #efefef;
 }
 
+#messageContainer{
+    width: 100%;
+}
+
 #pageContainer{
     display: flex;
-    flex-wrap: wrap;
+
+    height: 98vh;
 }
 
 .user > .status{
     margin-right: 5px;
-    width: 8px;
-    height: 8px;
+    width: 20px;
+    height: 20px;
     background-color: red;
     border-style: solid;
     border-radius: 50%;
@@ -74,8 +71,17 @@
 }
 
 .user{
+    margin-left: 5px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
+    font-size: 2vh;
+}
+
+#usersContainer{
+    width: 20vw;
+    border-style: solid;
+    border-width: 0.1vh;
+    background-color: #dedede;
 }
