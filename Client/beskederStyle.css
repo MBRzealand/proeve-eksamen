@@ -1,85 +1,90 @@
-#form {
-    position: fixed;
-    height: 3vh;
-    display: flex;
-    background: rgba(44, 44, 44, 0.55);
-    align-items: center;
-    box-sizing: border-box;
-}
-
-
-#input {
-
-    font-size: 2vh;
-    border: none;
-    padding: 0 2vw;
-    flex-grow: 1;
-    height: 2.5vh;
-    border-radius: 2rem;
-    margin: 0.25rem;
-}
-
-#input:focus {
-    outline: none;
-}
-
-#button1 {
-    background: #333;
-    border: none;
-    padding: 0 1rem;
-    margin: 0.25rem;
-    height: 3vh;
-    border-radius: 3px;
-    outline: none;
-    color: #fff;
-}
-
-#messages {
-    font-size: 2vh;
-    list-style-type: none;
+*{
     margin: 0;
-    padding: 0;
 }
-
-#messages > li {
-    padding: 0.5rem 1rem;
-}
-
-#messages > li:nth-child(odd) {
-    background: #efefef;
-}
-
-#messageContainer{
-    width: 100%;
-}
-
 #pageContainer{
+    overflow: auto;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100vw;
+    height: 100vh;
+}
 
-    height: 98vh;
+#topDisplay{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+#chatContainer{
+    border-top: 0.1vh solid;
+    border-right: 0.1vh solid;
+    border-bottom: 0.1vh solid;
+    width: 100%;
+    height: 100%;
+}
+
+ul{
+    padding-inline-start: 0;
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+#messages{
+    height: 100%;
+    width: 100%;
+    font-size: 2vw;
+}
+
+#inputArea{
+    display: flex;
+    justify-content: center;
+    background-color: grey;
+    padding: 0.5vh;
+    border-top: 0.1vh solid;
+}
+
+#input{
+    border-radius: 2vh 0 0 2vh;
+    border-color: black;
+    border-width: 0.1vh;
+    border-right: 0 solid;
+    width: 100%;
+    padding-left: 1vw;
+}
+
+#sendButton{
+    border-radius: 0 2vh 2vh 0;
+    border-color: black;
+    border-width: 0.1vh;
+    background-color: black;
+    color: white;
+    padding-right: 10px;
+    font-size: 2vw;
 }
 
 .user > .status{
-    margin-right: 5px;
-    width: 20px;
-    height: 20px;
+    width: 0.5rem;
+    height: 0.5rem;
     background-color: red;
     border-style: solid;
     border-radius: 50%;
     border-color: black;
-    border-width: 1px;
+    border-width: 0.1vh;
+    margin-right: 1vh;
+    margin-left: 1vh;
 }
 
 .user{
-    margin-left: 5px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
     align-items: center;
-    font-size: 2vh;
+    font-size: 2vw;
+    padding: 0.2vh;
+    border-bottom: 0.1vh solid;
 }
 
 #usersContainer{
+    height: 100%;
     width: 20vw;
     border-style: solid;
     border-width: 0.1vh;

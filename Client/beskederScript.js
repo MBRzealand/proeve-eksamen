@@ -1,5 +1,4 @@
 let messages = document.getElementById('messages');
-let form = document.getElementById('form');
 let input = document.getElementById('input');
 
 let connectionOptions =  {
@@ -49,11 +48,17 @@ let updateUsers = async () => {
     }
 }
 
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
+let sendMessage = () => {
     if (input.value) {
         socket.emit('chat message', data.username + ": " + input.value);
         input.value = '';
+    }
+};
+
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        sendMessage();
     }
 });
 
