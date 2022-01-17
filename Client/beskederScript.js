@@ -48,10 +48,16 @@ let updateUsers = async () => {
     }
 }
 
+function scrollToBottom (id) {
+    let div = document.getElementById(id);
+    div.scrollTop = div.scrollHeight - div.clientHeight;
+}
+
 let sendMessage = () => {
     if (input.value) {
         socket.emit('chat message', data.username + ": " + input.value);
         input.value = '';
+        scrollToBottom('messages')
     }
 };
 
